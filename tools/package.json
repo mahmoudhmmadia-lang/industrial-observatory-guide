@@ -1,0 +1,14 @@
+{
+  "name": "industrial-observatory-guide-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build-html.mjs",
+    "html": "node build-html.mjs",
+    "start": "node serve-html.mjs",
+    "dev": "node serve-html.mjs",
+    "test": "node --test guide.test.mjs",
+    "verify": "node verify-browser.mjs"
+  },
+  "devDependencies": { "playwright-core": "1.64.1" }
+}
