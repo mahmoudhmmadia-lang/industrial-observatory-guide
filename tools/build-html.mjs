@@ -4,13 +4,19 @@ import { fileURLToPath } from 'node:url';
 import { loadDocument } from './latex-parse.mjs';
 import { renderSite, UI } from './html-render.mjs';
 
-const quickLink = (page) => `<a class="quick-guide-link${page === 'q1.html' ? ' is-current' : ''}" href="q1.html"${page === 'q1.html' ? ' aria-current="page"' : ''} title="الدليل السريع"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span>الدليل السريع</span></a>`;
+const quickLink = (page) => {
+  const quick = page === 'q1.html' || page === 'quick.html';
+  const label = quick ? 'الدليل التفصيلي' : 'الدليل السريع';
+  const glyph = quick ? 'M4 4h6a2 2 0 0 1 2 2v15a4 4 0 0 0-4-2H4z M20 4h-6a2 2 0 0 0-2 2v15a4 4 0 0 1 4-2h4z' : 'M13 2 4 14h7l-1 8 9-12h-7z';
+  return `<a class="quick-guide-link" href="${quick ? 'index.html' : 'q1.html'}" title="${label}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="${glyph}"/></svg><span>${label}</span></a>`;
+};
+const footer = `<footer class="guide-footer"><div class="guide-footer-in"><div class="footer-ministry"><img src="../assets/ministry-logo.png" alt="شعار وزارة الاقتصاد والصناعة" width="760" height="230"><strong>وزارة الاقتصاد والصناعة</strong></div><div class="footer-rights"><div class="rightcode-logo"><img src="../assets/rightcode-logo.png" alt="Right Code" width="2528" height="518"></div><p>جميع الحقوق محفوظة لشركة <bdi dir="ltr">Right Code</bdi> © ${new Date().getFullYear()}</p></div></div></footer>`;
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export function buildHtml() {
   const site = path.join(ROOT, 'site');
   fs.mkdirSync(path.join(site, 'ar'), { recursive: true });
   fs.mkdirSync(path.join(site, 'assets/screens'), { recursive: true });
-  for (const name of ['guide.css', 'guide.js', 'kayanos-mark.svg', 'favicon.svg']) {
+  for (const name of ['guide.css', 'guide.js', 'kayanos-mark.svg', 'favicon.svg', 'ministry-logo.png', 'rightcode-logo.png']) {
     fs.copyFileSync(path.join(ROOT, 'web', name), path.join(site, 'assets', name));
   }
   fs.copyFileSync(path.join(ROOT, 'web/observatory.css'), path.join(site, 'assets/observatory.css'));
@@ -33,26 +39,12 @@ export function buildHtml() {
     Object.assign(pages, renderSite(doc, { lang: 'ar', guide: { store: 'industrial-observatory-guide-progress', extra: tag(quick, quick.title) } }));
   } finally { Object.assign(UI.ar, original); }
   for (const [name, source] of Object.entries(pages)) {
-    const status = {
-      'c1.html': '<strong>الفصل الأول · معتمد.</strong> يشرح الفكرة ورحلة المثال قبل إعدادها داخل النظام.',
-      'c2.html': '<strong>الفصل الثاني · معتمد.</strong> شخصيات العمل في المسح، ومسار المراجعة، ونقطة البداية لكل شخص، مع تطبيق على المثال.',
-      'c3.html': '<strong>الفصل الثالث · معتمد.</strong> ملف المنشأة وسجلاتها وحالتاها وربطها بفريق المسح.',
-      'c4.html': '<strong>الفصل الرابع · معتمد.</strong> بناء نموذج «بيانات التشغيل» وقواعده وربطه بالسجل، ثم جمعه في حزمة.',
-      'c5.html': '<strong>الفصل الخامس · معتمد.</strong> إعداد خطة «متابعة تشغيل الأفق» ومعاينتها وإطلاق جولة أيلول 2026.',
-      'c6.html': '<strong>الفصل السادس · معتمد.</strong> فتح التكليف وتعبئة الوحدتين وتصحيح رسائل التحقق والإرسال.',
-      'c7.html': '<strong>الفصل السابع · معتمد.</strong> ضبط خطوة الموافقة، وتقييم الإجابات، وإعادة «سبب التوقف» للتصحيح، والتوقيع حتى الاعتماد.',
-      'c8.html': '<strong>الفصل الثامن · معتمد.</strong> قراءة تقدم الخطة، وإعادة التوزيع، وسجل الجولة، ولوحة مؤشرات من الخطة، وإغلاق الجولة.',
-      'quick.html': '<strong>الدليل السريع · معتمد.</strong> الدورة كاملة في صفحة واحدة، مع روابط إلى الفصول التفصيلية.',
-      'q1.html': '<strong>الدليل السريع · معتمد.</strong> الدورة كاملة في صفحة واحدة، مع روابط إلى الفصول التفصيلية.',
-      'index.html': '<strong>الدليل مكتمل ومعتمد.</strong> الفصول الثمانية والدليل السريع معتمدة، وقد طُبق مثال مصنع الأفق فعلياً من البداية إلى النهاية.',
-    }[name] ?? '<strong>مخطط فصل لم يبدأ بعد.</strong> هذه الصفحة تحدد موضوعات الفصل، وليست شرحاً لإجراءاته.';
-    const notice = `<aside class="draft-notice">${status}</aside>`;
     // Arabic is the only authored language. Fail visibly if the shared shell changes.
     if (!source.includes('class="lang-btn"')) throw new Error('Shared language-switch markup changed');
     const html = source.replace(/<a class="lang-btn"[^>]*>[\s\S]*?<\/a>/, '')
       .replace(/<link rel="alternate" hreflang="en"[^>]*>/, '')
       .replace('</head>', '<link rel="stylesheet" href="../assets/observatory.css"></head>')
-      .replace('</header>', `</header>${notice}`)
+      .replace('<dialog class="help-dialog"', `${footer}<dialog class="help-dialog"`)
       .replace(/(<button class="guide-help-link"[\s\S]*?<\/button>)/, `$1${quickLink(name)}`);
     if (!html.includes('class="quick-guide-link')) throw new Error('Quick-guide button was not placed');
     fs.writeFileSync(path.join(site, 'ar', name), html);

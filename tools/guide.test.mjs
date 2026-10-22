@@ -22,18 +22,24 @@ test('every local link and fragment resolves in the Arabic guide', () => {
   }
 });
 
-test('draft status is visible and no untranslated language route is offered', () => {
+test('clean shell is rendered and no untranslated language route is offered', () => {
   assert.equal(Object.keys(pages).length, 11);
   for (const name of Object.keys(pages)) {
     const html = fs.readFileSync(path.join(ROOT, 'site/ar', name), 'utf8');
-    assert.match(html, /class="draft-notice"/);
+    assert.doesNotMatch(html, /class="(?:draft-notice|ministry-banner)"/);
     assert.match(html, /dir="rtl"/);
     assert.doesNotMatch(html, /\.\.\/en\//);
     if (['c1.html', 'c2.html', 'c3.html', 'c4.html', 'c5.html', 'c6.html', 'c7.html', 'c8.html', 'quick.html', 'q1.html'].includes(name)) {
-      assert.match(html, /· معتمد./);
+
       assert.doesNotMatch(html.split('<script id="guide-data"')[0], /حالة الفصل: لم يبدأ/);
         } else if (name !== 'index.html') assert.match(html, /حالة الفصل: لم يبدأ/);
-    assert.match(html, /class="quick-guide-link[^"]*" href="q1.html"/, `${name} lacks the quick-guide button`);
+    const quick = ['quick.html', 'q1.html'].includes(name);
+    assert.ok(html.includes(`class="quick-guide-link" href="${quick ? 'index.html' : 'q1.html'}"`));
+    assert.ok(html.includes(`<span>${quick ? 'الدليل التفصيلي' : 'الدليل السريع'}</span>`));
+    assert.match(html, /class="brand-lockup" dir="ltr"/);
+    assert.match(html, /class="guide-footer"/);
+    assert.match(html, /<strong>وزارة الاقتصاد والصناعة<\/strong>/);
+    assert.match(html, /assets\/rightcode-logo.png/);
   }
 });
 

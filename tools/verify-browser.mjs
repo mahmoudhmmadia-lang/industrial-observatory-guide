@@ -23,10 +23,36 @@ try {
       await page.goto(base + name);
       await page.evaluate(() => document.fonts.ready);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${name}: overflow at ${width}`);
-      assert.ok(await page.locator('.draft-notice').isVisible());
+      assert.equal(await page.locator('.draft-notice, .ministry-banner').count(), 0);
       assert.equal(await page.locator('[data-lang-switch]').count(), 0);
+      const quick = ['quick.html', 'q1.html'].includes(name);
+      assert.equal(await page.locator('.quick-guide-link').innerText(), quick ? 'الدليل التفصيلي' : 'الدليل السريع');
+      assert.equal(await page.locator('.brand-lockup').evaluate(el => getComputedStyle(el).direction), 'ltr');
+      assert.ok(await page.locator('.topbar-in').evaluate(nav => {
+        const controls = [...nav.children].filter(el => el.getBoundingClientRect().width > 0);
+        const boxes = controls.map(el => el.getBoundingClientRect());
+        return boxes.every((a, i) => boxes.slice(i + 1).every(b =>
+          a.right <= b.left + 1 || b.right <= a.left + 1 || a.bottom <= b.top + 1 || b.bottom <= a.top + 1));
+      }), `${name}: navbar controls overlap at ${width}`);
+      for (const logo of ['.rightcode-logo img']) {
+        await page.locator(logo).evaluate(img => img.decode());
+        assert.ok(await page.locator(logo).evaluate(img => img.naturalWidth > 0));
+      }
       checks.push({ page: name, width, theme });
     }
+    await page.goto(base);
+    await page.locator('.quick-guide-link').click();
+    await page.waitForURL('**/q1.html');
+    assert.equal(await page.locator('.quick-guide-link').innerText(), 'الدليل التفصيلي');
+    await page.locator('.quick-guide-link').click();
+    await page.waitForURL('**/index.html');
+    await page.goBack();
+    assert.equal(await page.locator('.quick-guide-link').innerText(), 'الدليل التفصيلي');
+    await page.reload();
+    assert.equal(await page.locator('.quick-guide-link').getAttribute('href'), 'index.html');
+    await page.screenshot({ path: path.join(shots, `branding-nav-${width}-${theme}.png`) });
+    await page.locator('.guide-footer').scrollIntoViewIfNeeded();
+    await page.locator('.guide-footer').screenshot({ path: path.join(shots, `branding-footer-${width}-${theme}.png`) });
     await page.goto(base);
     await page.locator('.path-link').first().click();
     await page.waitForURL('**/c1.html');
@@ -108,7 +134,7 @@ try {
   }
   assert.deepEqual(errors, []);
   fs.writeFileSync(path.join(ROOT, 'review/browser-verification.json'), JSON.stringify({ checkedAt: new Date().toISOString(), checks, interactions: ['chapter cards', 'next step', 'mobile menu', 'search and result selection', 'reading progress persistence and isolation', 'resume', 'reset', 'theme persistence', 'chapter 1 and 2 checklist persistence', 'chapter 2 screenshot zoom and Escape for all four images'], errors }, null, 2));
-  console.log(`Passed ${checks.length} page checks and reader interactions in four viewport/theme combinations.`);
+  console.log(`Passed ${checks.length} page checks, branding, guide switching (including back/reload), and reader interactions in four viewport/theme combinations.`);
 } finally {
   await browser?.close();
   await new Promise(resolve => server.close(resolve));

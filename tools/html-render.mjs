@@ -447,7 +447,7 @@ function shell({ ui, lang, page, home = 'index.html', title, description, body, 
 <header class="topbar">
   <div class="topbar-in">
     ${page === home ? '' : `<button class="icon-btn menu-btn" type="button" data-open-toc aria-label="${esc(ui.menu)}"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>`}
-    <a class="brand" href="${home}" aria-label="${esc(ui.brand)}"><img src="../assets/kayanos-mark.svg" alt="" width="34" height="23"><span class="brand-name">Kayan<b>OS</b></span><span class="brand-sep"></span><span class="brand-sub">${esc(ui.brand)}</span></a>
+    <a class="brand" href="${home}" aria-label="${esc(ui.brand)}"><span class="brand-lockup" dir="ltr"><img src="../assets/kayanos-mark.svg" alt="" width="34" height="23"><span class="brand-name">Kayan<b>OS</b></span></span><span class="brand-sep"></span><span class="brand-sub">${esc(ui.brand)}</span></a>
     <button class="search-btn" type="button" data-open-search><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span>${esc(ui.search)}</span><kbd dir="ltr">Ctrl K</kbd></button>
     <button class="guide-help-link" type="button" data-open-help aria-haspopup="dialog" aria-controls="guide-help" aria-label="${esc(ui.help)}" title="${esc(ui.help)}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 .5c0 1.5-2.5 2-2.5 3.5M12 16h.01"/></svg><span>${esc(ui.help)}</span></button>
     <a class="lang-btn" href="../${ui.other}/${page}" data-lang-switch="${ui.other}" hreflang="${ui.other}" lang="${ui.other}">${esc(ui.otherName)}</a>
