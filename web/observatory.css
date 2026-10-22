@@ -1,0 +1,4 @@
+/* Keep the shared KayanOS reader; only the draft notice is guide-specific. */
+.draft-notice { max-width: 1120px; margin: 1rem auto; padding: 1rem 1.25rem; border: 1px solid var(--border-strong); border-radius: 16px; background: var(--surface); color: var(--text-muted); line-height: 1.9; }
+.draft-notice strong { color: var(--brand-strong); }
+@media (max-width: 700px) { .draft-notice { margin-inline: 1rem; } }

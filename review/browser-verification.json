@@ -1,0 +1,198 @@
+{
+  "checkedAt": "2026-10-21T19:58:35.635Z",
+  "checks": [
+    {
+      "page": "index.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c1.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c2.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c3.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c4.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c5.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c6.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c7.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "c8.html",
+      "width": 1440,
+      "theme": "dark"
+    },
+    {
+      "page": "index.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c1.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c2.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c3.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c4.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c5.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c6.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c7.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "c8.html",
+      "width": 1440,
+      "theme": "light"
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c1.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c2.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c3.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c4.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c5.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c6.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c7.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "c8.html",
+      "width": 390,
+      "theme": "dark"
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c1.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c2.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c3.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c4.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c5.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c6.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c7.html",
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "page": "c8.html",
+      "width": 390,
+      "theme": "light"
+    }
+  ],
+  "interactions": [
+    "chapter cards",
+    "next step",
+    "mobile menu",
+    "search and result selection",
+    "reading progress persistence and isolation",
+    "resume",
+    "reset",
+    "theme persistence",
+    "chapter 1 and 2 checklist persistence",
+    "chapter 2 screenshot zoom and Escape for all four images"
+  ],
+  "errors": []
+}

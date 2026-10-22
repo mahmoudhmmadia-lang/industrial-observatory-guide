@@ -1,0 +1,42 @@
+{
+  "internalOnly": "Source records for authors; never cite them in published pages.",
+  "images": [
+    {
+      "source": "https://mei-4.kayanos.app/tasks/assignments/plans/epmaouipr5z582h0k1_ua?tab=setup",
+      "capturedAt": "2026-10-21T18:23:55.000Z",
+      "language": "ar",
+      "scope": "Read-only existing configuration; not the fictional example",
+      "image": "assets/screens/roles-candidates-ar.png",
+      "marks": [
+        {
+          "n": 1,
+          "label": "حقل في السجل"
+        },
+        {
+          "n": 2,
+          "label": "فريق المسح · وحدة"
+        },
+        {
+          "n": 3,
+          "label": "باحث ميداني - RES"
+        }
+      ],
+      "modifications": "Number markers added to the DOM before capture; no application values changed."
+    },
+    {
+      "image": "assets/screens/roles-approval-chain-ar.png",
+      "from": "reference manual artifact, figure c5_live_done (approved response, round 2)",
+      "modifications": "Three signer chips with staff codes pixelated; original numbered markers kept."
+    },
+    {
+      "image": "assets/screens/roles-home-leader-ar.jpg",
+      "from": "reference manual artifact, figure m_home (team leader home)",
+      "modifications": "None; original numbered markers."
+    },
+    {
+      "image": "assets/screens/roles-assignments-researcher-ar.jpg",
+      "from": "reference manual artifact, figure c3_hub_week (researcher assignments)",
+      "modifications": "None; original numbered markers."
+    }
+  ]
+}
