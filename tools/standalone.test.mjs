@@ -13,7 +13,7 @@ test('builds and serves from a clean standalone repository without sibling guide
   fs.mkdirSync(isolated);
   let server;
   try {
-    for (const name of ['main.tex', 'chapters', 'assets', 'web', 'tools', 'package.json']) {
+    for (const name of ['main.tex', 'chapters', 'quick', 'assets', 'web', 'tools', 'package.json']) {
       fs.cpSync(path.join(source, name), path.join(isolated, name), {
         recursive: true,
         filter: file => !file.split(path.sep).includes('node_modules'),

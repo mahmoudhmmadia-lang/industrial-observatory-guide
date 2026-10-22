@@ -1620,18 +1620,69 @@ td code {
     color: var(--text-muted, var(--text));
     opacity: 0.8;
 }
+.fig-keys-order {
+    margin-inline-start: 8px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+.fig-keys-order::before {
+    content: '·';
+    margin-inline-end: 8px;
+}
+/* The key reads as a sequence: a thin rail joins the badges in marker order. */
 .fig-keys ol {
     display: grid;
-    gap: 8px;
+    gap: 0;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 .fig-keys li {
+    position: relative;
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    padding-bottom: 10px;
     line-height: 1.65;
+}
+.fig-keys li:last-child {
+    padding-bottom: 0;
+}
+.fig-keys li:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 11px;
+    top: 28px;
+    bottom: 2px;
+    width: 2px;
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--key-badge, #12a368) 28%, transparent);
+}
+.fig-keys li.is-label {
+    align-items: center;
+    padding-bottom: 8px;
+}
+.fig-keys li.is-label .fig-key-no {
+    margin-top: 0;
+}
+.fig-keys li.is-label .fig-key-term {
+    font-weight: 600;
+}
+.fig-keys li.is-label:not(:last-child)::before {
+    top: 26px;
+}
+.fig-keys li.is-explained .fig-key-no {
+    margin-top: 8px;
+}
+.fig-keys li.is-explained:not(:last-child)::before {
+    top: 36px;
+}
+.fig-keys li.is-explained .fig-key-body {
+    flex: 1;
+    padding: 6px 12px 8px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--surface) 55%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
 }
 .fig-key-no {
     flex: none;

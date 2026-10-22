@@ -2,3 +2,8 @@
 .draft-notice { max-width: 1120px; margin: 1rem auto; padding: 1rem 1.25rem; border: 1px solid var(--border-strong); border-radius: 16px; background: var(--surface); color: var(--text-muted); line-height: 1.9; }
 .draft-notice strong { color: var(--brand-strong); }
 @media (max-width: 700px) { .draft-notice { margin-inline: 1rem; } }
+/* «الدليل السريع» in the top bar: one click from any page to the whole cycle. */
+.quick-guide-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 44px; min-height: 44px; padding: 8px 12px; font: 700 .8rem var(--font-body); white-space: nowrap; text-decoration: none; color: var(--on-brand, #fff); background: linear-gradient(135deg, var(--brand-strong), var(--accent, var(--brand))); border: 1px solid transparent; border-radius: 12px; box-shadow: 0 4px 14px color-mix(in srgb, var(--brand) 30%, transparent); }
+.quick-guide-link:hover { filter: brightness(1.06); }
+.quick-guide-link.is-current { color: var(--brand-strong); background: var(--brand-soft); border-color: var(--brand); box-shadow: none; }
+@media (max-width: 760px) { .quick-guide-link { padding: 8px; } .quick-guide-link > span { display: none; } }

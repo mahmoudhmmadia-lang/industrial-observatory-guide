@@ -23,19 +23,17 @@ test('every local link and fragment resolves in the Arabic guide', () => {
 });
 
 test('draft status is visible and no untranslated language route is offered', () => {
-  assert.equal(Object.keys(pages).length, 9);
+  assert.equal(Object.keys(pages).length, 11);
   for (const name of Object.keys(pages)) {
     const html = fs.readFileSync(path.join(ROOT, 'site/ar', name), 'utf8');
     assert.match(html, /class="draft-notice"/);
     assert.match(html, /dir="rtl"/);
     assert.doesNotMatch(html, /\.\.\/en\//);
-    if (name === 'c1.html') {
-      assert.match(html, /الفصل الأول · معتمد/);
+    if (['c1.html', 'c2.html', 'c3.html', 'c4.html', 'c5.html', 'c6.html', 'c7.html', 'c8.html', 'quick.html', 'q1.html'].includes(name)) {
+      assert.match(html, /· معتمد./);
       assert.doesNotMatch(html.split('<script id="guide-data"')[0], /حالة الفصل: لم يبدأ/);
-    } else if (['c2.html', 'c3.html', 'c4.html'].includes(name)) {
-      assert.match(html, /· قيد المراجعة/);
-      assert.doesNotMatch(html.split('<script id="guide-data"')[0], /حالة الفصل: لم يبدأ/);
-    } else if (name !== 'index.html') assert.match(html, /حالة الفصل: لم يبدأ/);
+        } else if (name !== 'index.html') assert.match(html, /حالة الفصل: لم يبدأ/);
+    assert.match(html, /class="quick-guide-link[^"]*" href="q1.html"/, `${name} lacks the quick-guide button`);
   }
 });
 

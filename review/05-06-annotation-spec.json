@@ -1,0 +1,404 @@
+{
+ "note": "Internal: raw test2 captures were kept outside the repo; this records crops, masks and markers of each published image.",
+ "images": [
+  {
+   "src": "raw/ch5-raw-records.png",
+   "out": "assets/screens/plans-records-ar.jpg",
+   "crop": {
+    "x": 130,
+    "y": 228,
+    "w": 1170,
+    "h": 578
+   },
+   "marks": [
+    {
+     "n": 1,
+     "x": 1068,
+     "y": 310
+    },
+    {
+     "n": 2,
+     "x": 1068,
+     "y": 362
+    },
+    {
+     "n": 3,
+     "x": 633,
+     "y": 442
+    },
+    {
+     "n": 4,
+     "x": 850,
+     "y": 513
+    },
+    {
+     "n": 5,
+     "x": 1068,
+     "y": 551
+    },
+    {
+     "n": 6,
+     "x": 487,
+     "y": 338
+    }
+   ]
+  },
+  {
+   "src": "raw/ch5-raw-distribution.png",
+   "out": "assets/screens/plans-distribution-ar.jpg",
+   "crop": {
+    "x": 490,
+    "y": 72,
+    "w": 810,
+    "h": 650
+   },
+   "masks": [
+    {
+     "x": 880,
+     "y": 179,
+     "w": 160,
+     "h": 24
+    }
+   ],
+   "marks": [
+    {
+     "n": 1,
+     "x": 1068,
+     "y": 143
+    },
+    {
+     "n": 2,
+     "x": 1068,
+     "y": 190
+    },
+    {
+     "n": 3,
+     "x": 1068,
+     "y": 408
+    },
+    {
+     "n": 4,
+     "x": 1068,
+     "y": 507
+    },
+    {
+     "n": 5,
+     "x": 1068,
+     "y": 553
+    },
+    {
+     "n": 6,
+     "x": 1068,
+     "y": 678
+    }
+   ]
+  },
+  {
+   "src": "raw/ch5-raw-preview-cap.png",
+   "out": "assets/screens/plans-preview-ar.png",
+   "crop": {
+    "x": 135,
+    "y": 285,
+    "w": 362,
+    "h": 500
+   },
+   "masks": [
+    {
+     "x": 355,
+     "y": 588,
+     "w": 100,
+     "h": 22
+    },
+    {
+     "x": 168,
+     "y": 723,
+     "w": 148,
+     "h": 22
+    }
+   ],
+   "marks": [
+    {
+     "n": 1,
+     "x": 470,
+     "y": 395
+    },
+    {
+     "n": 2,
+     "x": 240,
+     "y": 510
+    },
+    {
+     "n": 3,
+     "x": 470,
+     "y": 598
+    },
+    {
+     "n": 4,
+     "x": 470,
+     "y": 670
+    },
+    {
+     "n": 5,
+     "x": 470,
+     "y": 745
+    }
+   ]
+  },
+  {
+   "src": "raw/ch5-raw-launch.png",
+   "out": "assets/screens/plans-launch-ar.png",
+   "crop": {
+    "x": 468,
+    "y": 296,
+    "w": 480,
+    "h": 316
+   },
+   "marks": [
+    {
+     "n": 1,
+     "x": 525,
+     "y": 438
+    },
+    {
+     "n": 2,
+     "x": 735,
+     "y": 497
+    },
+    {
+     "n": 3,
+     "x": 525,
+     "y": 497
+    },
+    {
+     "n": 4,
+     "x": 888,
+     "y": 556
+    }
+   ]
+  },
+  {
+   "src": "raw/ch5-raw-overview.png",
+   "out": "assets/screens/plans-overview-ar.jpg",
+   "crop": {
+    "x": 125,
+    "y": 85,
+    "w": 1165,
+    "h": 800
+   },
+   "masks": [
+    {
+     "x": 1150,
+     "y": 831,
+     "w": 120,
+     "h": 24
+    }
+   ],
+   "marks": [
+    {
+     "n": 1,
+     "x": 905,
+     "y": 128
+    },
+    {
+     "n": 2,
+     "x": 1035,
+     "y": 318
+    },
+    {
+     "n": 3,
+     "x": 160,
+     "y": 410
+    },
+    {
+     "n": 4,
+     "x": 310,
+     "y": 627
+    },
+    {
+     "n": 5,
+     "x": 1135,
+     "y": 843
+    }
+   ]
+  },
+  {
+   "src": "raw/ch6-raw-card.png",
+   "out": "assets/screens/assignments-card-ar.png",
+   "marks": [
+    {
+     "n": 1,
+     "x": 958,
+     "y": 20
+    },
+    {
+     "n": 2,
+     "x": 810,
+     "y": 46
+    },
+    {
+     "n": 3,
+     "x": 1090,
+     "y": 65
+    },
+    {
+     "n": 4,
+     "x": 1040,
+     "y": 85
+    },
+    {
+     "n": 5,
+     "x": 196,
+     "y": 20
+    },
+    {
+     "n": 6,
+     "x": 92,
+     "y": 20
+    }
+   ]
+  },
+  {
+   "src": "raw/ch6-raw-open.png",
+   "out": "assets/screens/assignments-open-ar.jpg",
+   "crop": {
+    "x": 55,
+    "y": 100,
+    "w": 1322,
+    "h": 808
+   },
+   "marks": [
+    {
+     "n": 1,
+     "x": 250,
+     "y": 126
+    },
+    {
+     "n": 2,
+     "x": 1060,
+     "y": 221
+    },
+    {
+     "n": 3,
+     "x": 140,
+     "y": 218
+    },
+    {
+     "n": 4,
+     "x": 1100,
+     "y": 719
+    },
+    {
+     "n": 5,
+     "x": 1030,
+     "y": 818
+    },
+    {
+     "n": 6,
+     "x": 180,
+     "y": 890
+    }
+   ]
+  },
+  {
+   "src": "raw/ch6-raw-validation.png",
+   "out": "assets/screens/assignments-validation-ar.jpg",
+   "crop": {
+    "x": 70,
+    "y": 605,
+    "w": 1300,
+    "h": 303
+   },
+   "marks": [
+    {
+     "n": 1,
+     "x": 205,
+     "y": 666
+    },
+    {
+     "n": 2,
+     "x": 225,
+     "y": 702
+    },
+    {
+     "n": 3,
+     "x": 1250,
+     "y": 752
+    }
+   ]
+  },
+  {
+   "src": "raw/ch6-raw-submitted.png",
+   "out": "assets/screens/assignments-submitted-ar.jpg",
+   "crop": {
+    "x": 55,
+    "y": 100,
+    "w": 1322,
+    "h": 745
+   },
+   "marks": [
+    {
+     "n": 1,
+     "x": 1222,
+     "y": 411
+    },
+    {
+     "n": 2,
+     "x": 465,
+     "y": 218
+    },
+    {
+     "n": 3,
+     "x": 1312,
+     "y": 241
+    },
+    {
+     "n": 4,
+     "x": 1250,
+     "y": 668
+    },
+    {
+     "n": 5,
+     "x": 424,
+     "y": 262
+    }
+   ]
+  },
+  {
+   "src": "raw/a11.png",
+   "out": "assets/screens/assignments-package-ar.png",
+   "crop": {
+    "x": 175,
+    "y": 85,
+    "w": 1065,
+    "h": 395
+   },
+   "marks": [
+    {
+     "n": 1,
+     "x": 850,
+     "y": 128
+    },
+    {
+     "n": 2,
+     "x": 345,
+     "y": 133
+    },
+    {
+     "n": 3,
+     "x": 1060,
+     "y": 190
+    },
+    {
+     "n": 4,
+     "x": 340,
+     "y": 361
+    },
+    {
+     "n": 5,
+     "x": 340,
+     "y": 424
+    }
+   ]
+  }
+ ]
+}

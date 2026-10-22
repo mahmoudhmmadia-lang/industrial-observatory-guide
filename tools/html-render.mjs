@@ -69,6 +69,7 @@ export const UI = {
         zoom: 'تكبير الصورة',
         original: 'فتح الصورة الأصلية',
         keyTitle: 'مفتاح الأرقام',
+        keyOrder: 'بترتيب الأرقام في الصورة',
         close: 'إغلاق',
         menu: 'القائمة',
         of: 'من',
@@ -141,6 +142,7 @@ export const UI = {
         zoom: 'Enlarge image',
         original: 'Open original image',
         keyTitle: 'Numbered key',
+        keyOrder: 'In the order shown on the screenshot',
         close: 'Close',
         menu: 'Menu',
         of: 'of',
@@ -349,17 +351,22 @@ function renderTable(b, ctx) {
 }
 
 // The description and the numbered key are shown apart: a short paragraph,
-// then one row per marker whose badge matches the number on the screenshot.
+// then the markers in their order on the screenshot. A marker whose label says
+// enough is one compact line; only "label: explanation" keys get a second line.
 function renderNote(b, ctx) {
     if (!b.note) return ''
     const text = b.noteText ? `<p class="fig-desc">${inline(b.noteText, ctx)}</p>` : ''
     if (!b.noteKeys?.length) return `<div class="fig-note">${text}</div>`
     const rows = b.noteKeys.map(({ n, text: key }) => {
         const m = /^(.{1,60}?):\s+(.+)$/s.exec(key)
-        const body = m ? `<strong class="fig-key-term">${inline(m[1], ctx)}</strong><span class="fig-key-text">${inline(m[2], ctx)}</span>` : `<span class="fig-key-text">${inline(key, ctx)}</span>`
-        return `<li><span class="fig-key-no" dir="ltr">${n}</span><span class="fig-key-body">${body}</span></li>`
+        const body = m
+            ? `<strong class="fig-key-term">${inline(m[1], ctx)}</strong><span class="fig-key-text">${inline(m[2], ctx)}</span>`
+            : key.length > 48
+                ? `<span class="fig-key-text">${inline(key, ctx)}</span>`
+                : `<span class="fig-key-term">${inline(key.replace(/[.。]\s*$/, ''), ctx)}</span>`
+        return `<li class="${m ? 'is-explained' : key.length > 48 ? 'is-note' : 'is-label'}"><span class="fig-key-no" dir="ltr">${n}</span><span class="fig-key-body">${body}</span></li>`
     }).join('')
-    return `<div class="fig-note">${text}<div class="fig-keys"><p class="fig-keys-title">${esc(ctx.ui.keyTitle)}</p><ol>${rows}</ol></div></div>`
+    return `<div class="fig-note">${text}<div class="fig-keys"><p class="fig-keys-title">${esc(ctx.ui.keyTitle)}<span class="fig-keys-order">${esc(ctx.ui.keyOrder)}</span></p><ol>${rows}</ol></div></div>`
 }
 
 function renderFigure(b, ctx) {
