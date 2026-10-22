@@ -4,21 +4,33 @@
 
 ## المعاينة
 
-من جذر المستودع:
+من داخل مجلد الدليل أو جذر مستودعه المستقل:
 
 ```powershell
-node industrial-observatory-guide/tools/build-html.mjs
-node industrial-observatory-guide/tools/serve-html.mjs
+npm run build
+npm start
 ```
 
 افتح `http://127.0.0.1:4322/ar/`. يعاد البناء عند تعديل الفصول أو التصميم؛ حدّث صفحة المتصفح لرؤية التغيير. يمكن أيضاً فتح `site/ar/index.html` بعد البناء.
 
 ```powershell
-node --test industrial-observatory-guide/tools/guide.test.mjs
-node industrial-observatory-guide/tools/verify-browser.mjs
+npm test
+node tools/verify-browser.mjs
 ```
 
-البناء يحتاج Node.js فقط. اختبار المتصفح يحتاج Microsoft Edge و`playwright-core`؛ يمكن استخدام تثبيته الموجود في أدوات دليل النظام، أو تشغيل `npm install` داخل `tools/`.
+البناء يحتاج Node.js فقط. اختبار المتصفح يحتاج Microsoft Edge و`playwright-core`؛ ثبّت حزمة الاختبار بتشغيل `npm install` داخل `tools/`.
+
+## النشر على Render
+
+يحتوي الدليل على جميع ملفات البناء والتصميم اللازمة، ويمكن نشره من مستودع مستقل. عند إنشاء **Static Site** على Render، استخدم الإعدادات التالية:
+
+- اترك **Root Directory** فارغاً إذا كانت ملفات الدليل في جذر المستودع.
+- **Build Command**: `node tools/build-html.mjs`.
+- **Publish Directory**: `site`.
+
+إذا بقي الدليل داخل المستودع الأكبر، اجعل **Root Directory** يساوي `industrial-observatory-guide` مع الإبقاء على الإعدادات السابقة. لا يحتاج الموقع إلى أمر تشغيل أو قاعدة تعيد جميع المسارات إلى `index.html`؛ لكل فصل ملف HTML مستقل. يتوفر أيضاً ملف `render.yaml` للنشر عبر Blueprint من مستودع الدليل المستقل.
+
+راجع [مرجع إعدادات Render](https://render.com/docs/blueprint-spec) عند تعديل إعدادات النشر.
 
 ## الملفات
 
@@ -31,11 +43,11 @@ node industrial-observatory-guide/tools/verify-browser.mjs
 | `references/` | المصادر والمصطلحات وحدود التحقق. |
 | `review/` | ملاحظات المراجعة ونتائج الاختبارات وصور المعاينة. |
 | `assets/screens/` | صور التطبيق التي ستُلتقط عند كتابة الفصول. |
-| `web/` | الإضافات الخاصة بتصميم دليل المرصد. |
+| `web/` | ملفات التصميم والتفاعل والشعار، وإضافات دليل المرصد. |
 | `tools/` | البناء والمعاينة والتحقق. |
 | `site/` | موقع مولّد، لا يُعدّل يدوياً ولا يدخل في Git. |
 
-يعيد البناء استخدام محلل LaTeX ومولّد HTML وملفات التصميم والتفاعل من `../kayanos-guide/`. يجب إبقاء المشروعين متجاورين؛ لا حاجة إلى محرك TeX، ولا تُنشأ ملفات PDF أو Word. موقع `site/` الناتج قابل للمعاينة مستقلاً.
+يتضمن `tools/` نسخة محلية من محلل LaTeX ومولّد HTML والمخططات، ويتضمن `web/` ملفات القارئ. أُخذت هذه الملفات من دليل النظام، لكنها لا تستورده ولا تتطلب وجوده بجوار هذا الدليل. تُراجع تحسينات القارئ وتُنقل بين المستودعين صراحةً عند الحاجة. لا حاجة إلى محرك TeX، ولا تُنشأ ملفات PDF أو Word.
 
 ## المتابعة مع أي نموذج
 

@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: industrial-observatory-guide
+    runtime: static
+    buildCommand: node tools/build-html.mjs
+    staticPublishPath: ./site

@@ -22,9 +22,10 @@ export function createServer() {
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   buildHtml();
-  const port = Number(process.env.PORT) || 4322;
-  createServer().listen(port, '127.0.0.1', () => console.log(`Guide: http://127.0.0.1:${port}/ar/`));
-  // Rebuild in a fresh process so edits to the shared renderer in kayanos-guide are
+  const port = process.env.PORT === undefined ? 4322 : Number(process.env.PORT);
+  const server = createServer();
+  server.listen(port, '127.0.0.1', () => console.log(`Guide: http://127.0.0.1:${server.address().port}/ar/`));
+  // Rebuild in a fresh process so edits to the local renderer are
   // picked up; an in-process rebuild reuses the modules loaded at startup and would
   // overwrite the site with stale markup.
   let timer;
@@ -38,9 +39,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     }, 200);
   };
   fs.watch(ROOT, { recursive: true }, (_event, file) => {
-    if (file && /^(chapters[\\/].*\.tex|main\.tex|web[\\/].*\.css|tools[\\/]build-html\.mjs)$/.test(file)) rebuild();
-  });
-  fs.watch(path.resolve(ROOT, '../kayanos-guide'), { recursive: true }, (_event, file) => {
-    if (file && /^(tools[\\/](html-render|latex-parse|html-diagram)\.mjs|web[\\/]guide\.(css|js))$/.test(file)) rebuild();
+    if (file && /^(chapters[\\/].*\.tex|main\.tex|web[\\/].*\.(css|js|svg)|tools[\\/].*\.mjs)$/.test(file)) rebuild();
   });
 }

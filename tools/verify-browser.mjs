@@ -1,13 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import { createRequire } from 'node:module';
+import { chromium } from 'playwright-core';
 import { buildHtml, ROOT } from './build-html.mjs';
 import { createServer } from './serve-html.mjs';
 
-let chromium;
-try { ({ chromium } = await import('playwright-core')); }
-catch { ({ chromium } = createRequire(new URL('../../kayanos-guide/tools/package.json', import.meta.url))('playwright-core')); }
 const pages = buildHtml();
 const server = createServer();
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));

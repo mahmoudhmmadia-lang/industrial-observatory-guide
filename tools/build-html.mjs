@@ -1,17 +1,16 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadDocument } from '../../kayanos-guide/tools/latex-parse.mjs';
-import { renderSite, UI } from '../../kayanos-guide/tools/html-render.mjs';
+import { loadDocument } from './latex-parse.mjs';
+import { renderSite, UI } from './html-render.mjs';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const shared = path.resolve(ROOT, '../kayanos-guide');
 export function buildHtml() {
   const site = path.join(ROOT, 'site');
   fs.mkdirSync(path.join(site, 'ar'), { recursive: true });
   fs.mkdirSync(path.join(site, 'assets/screens'), { recursive: true });
   for (const name of ['guide.css', 'guide.js', 'kayanos-mark.svg', 'favicon.svg']) {
-    fs.copyFileSync(path.join(shared, 'web', name), path.join(site, 'assets', name));
+    fs.copyFileSync(path.join(ROOT, 'web', name), path.join(site, 'assets', name));
   }
   fs.copyFileSync(path.join(ROOT, 'web/observatory.css'), path.join(site, 'assets/observatory.css'));
   const doc = loadDocument(ROOT, { lang: 'ar' });

@@ -1,0 +1,10 @@
+{
+  "name": "industrial-observatory-guide",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build-html.mjs",
+    "start": "node tools/serve-html.mjs",
+    "test": "node --test tools/guide.test.mjs tools/standalone.test.mjs"
+  }
+}

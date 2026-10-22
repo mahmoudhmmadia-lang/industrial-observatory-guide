@@ -1,8 +1,7 @@
 // Read-only capture of the already authenticated reference browser; no session is saved.
 import fs from 'node:fs';
 import path from 'node:path';
-import { createRequire } from 'node:module';
-const { chromium } = createRequire(new URL('../../kayanos-guide/tools/package.json', import.meta.url))('playwright-core');
+import { chromium } from 'playwright-core';
 const root = path.resolve(import.meta.dirname, '..');
 const browser = await chromium.connectOverCDP('http://127.0.0.1:9337');
 try {
